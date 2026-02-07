@@ -66,10 +66,24 @@
   cursor: not-allowed;
 }
 
+/* ============ LAYOUT ============ */
+.app {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.app-main {
+  flex: 1;
+  overflow-y: auto;
+  padding-bottom: 1rem;
+}
+
 /* ============ HEADER ============ */
 .app-header {
+  flex-shrink: 0;
   text-align: center;
-  padding: 1.5rem 1rem;
+  padding: 1rem 1rem 0.75rem;
 }
 
 .app-header h1 {
