@@ -242,6 +242,143 @@
   color: #2d3436;
 }
 
+.tabla-card-clickable {
+  cursor: pointer;
+}
+
+/* ============ TABLA MODAL ============ */
+.tabla-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.tabla-modal {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  max-width: 500px;
+  width: 100%;
+}
+
+.tabla-modal-content {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem 2.5rem;
+  flex: 1;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.tabla-modal-content h3 {
+  font-size: 1.8rem;
+  color: #6c5ce7;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 3px solid #f0f0f0;
+}
+
+.tabla-modal-content ul {
+  list-style: none;
+}
+
+.tabla-modal-content li {
+  padding: 0.45rem 0;
+  font-size: 1.25rem;
+  color: #636e72;
+  text-align: center;
+}
+
+.tabla-modal-content li strong {
+  color: #2d3436;
+  font-size: 1.3rem;
+}
+
+.tabla-modal-close {
+  position: absolute;
+  top: -0.5rem;
+  right: -0.5rem;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: none;
+  background: #e17055;
+  color: white;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  transition: transform 0.2s, background 0.2s;
+  line-height: 1;
+}
+
+.tabla-modal-close:hover {
+  background: #d63031;
+  transform: scale(1.1);
+}
+
+.tabla-modal-nav {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  color: white;
+  font-size: 1.8rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: transform 0.2s, opacity 0.2s;
+  line-height: 1;
+}
+
+.tabla-modal-nav:hover:not(:disabled) {
+  transform: scale(1.15);
+}
+
+.tabla-modal-nav:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+@media (max-width: 600px) {
+  .tabla-modal {
+    gap: 0.25rem;
+  }
+
+  .tabla-modal-content {
+    padding: 1.5rem 1rem;
+  }
+
+  .tabla-modal-content h3 {
+    font-size: 1.4rem;
+  }
+
+  .tabla-modal-content li {
+    font-size: 1.1rem;
+    padding: 0.3rem 0;
+  }
+
+  .tabla-modal-nav {
+    width: 40px;
+    height: 40px;
+    font-size: 1.5rem;
+  }
+}
+
 /* ============ QUIZ SETUP ============ */
 .quiz-setup {
   text-align: center;
