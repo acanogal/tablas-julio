@@ -1,3 +1,71 @@
+/* ============ NAME SCREEN ============ */
+.name-screen {
+  text-align: center;
+  padding: 3rem 1rem;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.name-screen h1 {
+  font-size: 2.2rem;
+  color: #6c5ce7;
+  margin-bottom: 1rem;
+}
+
+.name-subtitle {
+  font-size: 1.3rem;
+  color: #636e72;
+  margin-bottom: 2rem;
+}
+
+.name-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.name-input {
+  width: 100%;
+  max-width: 280px;
+  padding: 0.8rem 1.2rem;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-align: center;
+  border: 3px solid #dfe6e9;
+  border-radius: 1rem;
+  outline: none;
+  transition: border-color 0.2s;
+  color: #2d3436;
+  background: white;
+}
+
+.name-input:focus {
+  border-color: #6c5ce7;
+}
+
+.btn-name {
+  padding: 0.8rem 2.5rem;
+  background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-name:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(108, 92, 231, 0.4);
+}
+
+.btn-name:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* ============ HEADER ============ */
 .app-header {
   text-align: center;
@@ -37,6 +105,86 @@
   background: #6c5ce7;
   border-color: #6c5ce7;
   color: white;
+}
+
+.nav-btn-change {
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+  border-style: dashed;
+}
+
+.nav-btn-install {
+  background: #00b894;
+  border-color: #00b894;
+  color: white;
+  font-size: 0.85rem;
+  padding: 0.4rem 1rem;
+}
+
+.nav-btn-install:hover {
+  background: #00a381;
+  border-color: #00a381;
+  color: white;
+}
+
+.btn-install {
+  margin-top: 1.5rem;
+  padding: 0.7rem 2rem;
+  background: #00b894;
+  color: white;
+  border: none;
+  border-radius: 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-install:hover {
+  background: #00a381;
+  transform: scale(1.05);
+}
+
+/* ============ iOS INSTALL GUIDE ============ */
+.ios-guide-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 1rem;
+  animation: fadeIn 0.2s ease;
+}
+
+.ios-guide {
+  background: white;
+  border-radius: 1.5rem;
+  padding: 2rem;
+  max-width: 360px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.ios-guide h3 {
+  font-size: 1.3rem;
+  color: #2d3436;
+  margin-bottom: 1.2rem;
+}
+
+.ios-guide ol {
+  text-align: left;
+  padding-left: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.ios-guide li {
+  font-size: 1rem;
+  color: #636e72;
+  padding: 0.4rem 0;
+  line-height: 1.4;
 }
 
 /* ============ TABLAS ============ */
@@ -110,6 +258,65 @@
   font-size: 1.1rem;
   color: #636e72;
   margin-bottom: 2rem;
+}
+
+.table-selector {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.6rem;
+  max-width: 340px;
+  margin: 0 auto 1.5rem;
+}
+
+.btn-table-select {
+  padding: 0.6rem 0.4rem;
+  border: 2px solid #dfe6e9;
+  border-radius: 0.75rem;
+  background: white;
+  color: #636e72;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-table-select:hover {
+  border-color: #6c5ce7;
+  color: #6c5ce7;
+}
+
+.btn-table-select.selected {
+  background: #6c5ce7;
+  border-color: #6c5ce7;
+  color: white;
+}
+
+.btn-continue {
+  margin-top: 0.5rem;
+}
+
+.btn-continue:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.btn-back {
+  display: inline-block;
+  margin-top: 1.5rem;
+  padding: 0.5rem 1.5rem;
+  background: none;
+  border: 2px solid #dfe6e9;
+  border-radius: 2rem;
+  color: #636e72;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-back:hover {
+  border-color: #6c5ce7;
+  color: #6c5ce7;
 }
 
 .quiz-options {
@@ -246,9 +453,15 @@
   opacity: 0.6;
 }
 
+.quiz-buttons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
 .btn-submit {
-  display: block;
-  margin: 1rem auto 0;
   padding: 0.7rem 2rem;
   background: #6c5ce7;
   color: white;
@@ -268,6 +481,46 @@
 .btn-submit:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+.btn-hint {
+  padding: 0.7rem 1.5rem;
+  background: white;
+  color: #fdcb6e;
+  border: 2px solid #fdcb6e;
+  border-radius: 2rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-hint:hover:not(:disabled) {
+  background: #fdcb6e;
+  color: white;
+  transform: scale(1.05);
+}
+
+.btn-hint:disabled {
+  background: #fdcb6e;
+  color: white;
+  opacity: 0.7;
+  cursor: default;
+}
+
+.hint-box {
+  margin-top: 1rem;
+  padding: 0.8rem 1.2rem;
+  background: #ffeaa7;
+  border-radius: 0.75rem;
+  animation: fadeIn 0.3s ease;
+}
+
+.hint-text {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #6c5ce7;
+  line-height: 1.4;
 }
 
 .feedback {

@@ -30,8 +30,8 @@ export default defineConfig({
         ],
       },
       manifest: {
-        name: 'Las Tablas de Julio',
-        short_name: 'Tablas Julio',
+        name: 'Las Tablas de Multiplicar',
+        short_name: 'Tablas',
         description: 'Aprende y practica las tablas de multiplicar',
         theme_color: '#6c5ce7',
         background_color: '#f8f9ff',

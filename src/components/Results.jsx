@@ -4,12 +4,12 @@ function formatTime(seconds) {
   return `${mins.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
 }
 
-function getMessage(percentage) {
-  if (percentage === 100) return "PERFECTO, Julio! Eres un crack de las mates!";
-  if (percentage >= 80) return "Genial, Julio! Lo has hecho muy bien!";
-  if (percentage >= 60) return "Bien hecho, Julio! Sigue practicando!";
-  if (percentage >= 40) return "No esta mal, Julio! A seguir mejorando!";
-  return "Animo, Julio! La practica hace al maestro!";
+function getMessage(percentage, name) {
+  if (percentage === 100) return `PERFECTO, ${name}! Eres un crack de las mates!`;
+  if (percentage >= 80) return `Genial, ${name}! Lo has hecho muy bien!`;
+  if (percentage >= 60) return `Bien hecho, ${name}! Sigue practicando!`;
+  if (percentage >= 40) return `No esta mal, ${name}! A seguir mejorando!`;
+  return `Animo, ${name}! La practica hace al maestro!`;
 }
 
 function getEmoji(percentage) {
@@ -20,7 +20,7 @@ function getEmoji(percentage) {
   return "📚";
 }
 
-function Results({ correct, total, time, onPlayAgain }) {
+function Results({ correct, total, time, name, hintsUsed, onPlayAgain }) {
   const wrong = total - correct;
   const percentage = Math.round((correct / total) * 100);
 
@@ -30,7 +30,7 @@ function Results({ correct, total, time, onPlayAgain }) {
 
       <div className="results-emoji">{getEmoji(percentage)}</div>
 
-      <p className="results-message">{getMessage(percentage)}</p>
+      <p className="results-message">{getMessage(percentage, name)}</p>
 
       <div className="results-stats">
         <div className="stat stat-correct">
@@ -59,6 +59,11 @@ function Results({ correct, total, time, onPlayAgain }) {
           Tiempo por pregunta:{" "}
           <strong>{(time / total).toFixed(1)} segundos</strong>
         </p>
+        {hintsUsed > 0 && (
+          <p>
+            Pistas usadas: <strong>{hintsUsed}</strong>
+          </p>
+        )}
       </div>
 
       <button className="btn-play-again" onClick={onPlayAgain}>
