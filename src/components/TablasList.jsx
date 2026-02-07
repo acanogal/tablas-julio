@@ -1,5 +1,5 @@
 function TablasList() {
-  const tablas = Array.from({ length: 10 }, (_, i) => i + 1);
+  const tablas = Array.from({ length: 12 }, (_, i) => i + 1);
 
   return (
     <div className="tablas-container">

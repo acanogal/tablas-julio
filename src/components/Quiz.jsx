@@ -3,8 +3,8 @@ import Results from "./Results";
 
 function generateQuestions(count) {
   const allQuestions = [];
-  for (let a = 1; a <= 10; a++) {
-    for (let b = 1; b <= 10; b++) {
+  for (let a = 1; a <= 12; a++) {
+    for (let b = 1; b <= 12; b++) {
       allQuestions.push({ a, b, answer: a * b });
     }
   }
@@ -129,7 +129,7 @@ function Quiz() {
             </button>
           ))}
           <button className="btn-option btn-all" onClick={() => startQuiz("all")}>
-            Todas (100)
+            Todas (144)
           </button>
         </div>
       </div>
