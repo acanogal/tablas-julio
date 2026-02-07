@@ -113,6 +113,24 @@
   border-style: dashed;
 }
 
+.lang-flag {
+  position: fixed;
+  top: 0.75rem;
+  right: 0.75rem;
+  z-index: 50;
+  background: none;
+  border: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  line-height: 1;
+  transition: transform 0.2s;
+  padding: 0;
+}
+
+.lang-flag:hover {
+  transform: scale(1.2);
+}
+
 .nav-btn-install {
   background: #00b894;
   border-color: #00b894;

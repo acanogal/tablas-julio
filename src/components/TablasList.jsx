@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
+import { useI18n } from "../i18n.jsx";
 
 function TablasList() {
+  const { t } = useI18n();
   const tablas = Array.from({ length: 12 }, (_, i) => i + 1);
   const [selected, setSelected] = useState(null);
 
@@ -17,7 +19,7 @@ function TablasList() {
 
   return (
     <div className="tablas-container">
-      <h2>Tablas de Multiplicar</h2>
+      <h2>{t.multiplicationTables}</h2>
       <div className="tablas-grid">
         {tablas.map((num) => (
           <div
@@ -25,7 +27,7 @@ function TablasList() {
             className="tabla-card tabla-card-clickable"
             onClick={() => setSelected(num)}
           >
-            <h3>Tabla del {num}</h3>
+            <h3>{t.tableOf(num)}</h3>
             <ul>
               {tablas.map((mult) => (
                 <li key={mult}>
@@ -43,7 +45,7 @@ function TablasList() {
             <button
               className="tabla-modal-close"
               onClick={() => setSelected(null)}
-              aria-label="Cerrar"
+              aria-label={t.close}
             >
               &times;
             </button>
@@ -52,13 +54,13 @@ function TablasList() {
               className="tabla-modal-nav tabla-modal-prev"
               onClick={() => setSelected(selected - 1)}
               disabled={selected <= 1}
-              aria-label="Tabla anterior"
+              aria-label={t.previousTable}
             >
               &#8249;
             </button>
 
             <div className="tabla-modal-content">
-              <h3>Tabla del {selected}</h3>
+              <h3>{t.tableOf(selected)}</h3>
               <ul>
                 {tablas.map((mult) => (
                   <li key={mult}>
@@ -72,7 +74,7 @@ function TablasList() {
               className="tabla-modal-nav tabla-modal-next"
               onClick={() => setSelected(selected + 1)}
               disabled={selected >= 12}
-              aria-label="Tabla siguiente"
+              aria-label={t.nextTable}
             >
               &#8250;
             </button>

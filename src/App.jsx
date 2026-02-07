@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import TablasList from "./components/TablasList";
 import Quiz from "./components/Quiz";
+import { useI18n } from "./i18n.jsx";
 import "./App.css";
 
 const isStandalone =
@@ -8,6 +9,7 @@ const isStandalone =
   window.navigator.standalone === true;
 
 function App() {
+  const { t, lang, changeLang } = useI18n();
   const [view, setView] = useState("tablas"); // tablas | quiz
   const [name, setName] = useState(() => localStorage.getItem("studentName") || "Julio");
   const [editingName, setEditingName] = useState(false);
@@ -54,29 +56,29 @@ function App() {
 
   const installNavButton = !isStandalone && (
     <button className="nav-btn nav-btn-install" onClick={handleInstall}>
-      Instalar app
+      {t.installApp}
     </button>
   );
 
   return (
     <div className="app">
       <header className="app-header">
-        <h1>Las Tablas de {name}</h1>
+        <h1>{t.title(name)}</h1>
         <nav className="app-nav">
           <button
             className={`nav-btn ${view === "tablas" ? "active" : ""}`}
             onClick={() => setView("tablas")}
           >
-            Ver Tablas
+            {t.viewTables}
           </button>
           <button
             className={`nav-btn ${view === "quiz" ? "active" : ""}`}
             onClick={() => setView("quiz")}
           >
-            Practicar
+            {t.practice}
           </button>
           <button className="nav-btn nav-btn-change" onClick={openChangeName}>
-            Cambiar nombre
+            {t.changeName}
           </button>
           {installNavButton}
         </nav>
@@ -90,19 +92,19 @@ function App() {
       {editingName && (
         <div className="ios-guide-overlay" onClick={() => setEditingName(false)}>
           <div className="ios-guide" onClick={(e) => e.stopPropagation()}>
-            <h3>Cambiar nombre</h3>
+            <h3>{t.changeName}</h3>
             <form onSubmit={saveName} className="name-form">
               <input
                 type="text"
                 className="name-input"
                 value={nameInput}
                 onChange={(e) => setNameInput(e.target.value)}
-                placeholder="Escribe tu nombre"
+                placeholder={t.enterYourName}
                 autoFocus
                 autoComplete="off"
               />
               <button type="submit" className="btn-name" disabled={!nameInput.trim()}>
-                Guardar
+                {t.save}
               </button>
             </form>
           </div>
@@ -112,18 +114,25 @@ function App() {
       {showIOSGuide && (
         <div className="ios-guide-overlay" onClick={() => setShowIOSGuide(false)}>
           <div className="ios-guide" onClick={(e) => e.stopPropagation()}>
-            <h3>Instalar en tu dispositivo</h3>
+            <h3>{t.installOnDevice}</h3>
             <ol>
-              <li>Pulsa el boton <strong>Compartir</strong> en la barra del navegador</li>
-              <li>Selecciona <strong>"Anadir a pantalla de inicio"</strong></li>
-              <li>Pulsa <strong>"Anadir"</strong> para confirmar</li>
+              <li dangerouslySetInnerHTML={{ __html: t.iosStep1 }} />
+              <li dangerouslySetInnerHTML={{ __html: t.iosStep2 }} />
+              <li dangerouslySetInnerHTML={{ __html: t.iosStep3 }} />
             </ol>
             <button className="btn-name" onClick={() => setShowIOSGuide(false)}>
-              Entendido
+              {t.understood}
             </button>
           </div>
         </div>
       )}
+      <button
+        className="lang-flag"
+        onClick={() => changeLang(lang === "es" ? "en" : "es")}
+        aria-label={t.language}
+      >
+        {lang === "es" ? "\u{1F1EC}\u{1F1E7}" : "\u{1F1EA}\u{1F1F8}"}
+      </button>
     </div>
   );
 }
