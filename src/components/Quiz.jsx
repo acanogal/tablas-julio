@@ -262,6 +262,8 @@ function Quiz({ name }) {
           <input
             ref={inputRef}
             type="number"
+            inputMode="numeric"
+            pattern="[0-9]*"
             className="quiz-input"
             value={userAnswer}
             onChange={(e) => setUserAnswer(e.target.value)}

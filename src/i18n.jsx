@@ -40,7 +40,7 @@ const translations = {
     // Quiz - playing
     questionProgress: (current, total) => `Pregunta ${current} de ${total}`,
     howMuchIs: (name) => `${name}, cuanto es...`,
-    yourAnswer: "Tu respuesta",
+    yourAnswer: "?",
     answer: "Responder",
     hintVisible: "Pista visible",
     hint: "Pista",
@@ -122,7 +122,7 @@ const translations = {
     // Quiz - playing
     questionProgress: (current, total) => `Question ${current} of ${total}`,
     howMuchIs: (name) => `${name}, what is...`,
-    yourAnswer: "Your answer",
+    yourAnswer: "?",
     answer: "Answer",
     hintVisible: "Hint shown",
     hint: "Hint",
