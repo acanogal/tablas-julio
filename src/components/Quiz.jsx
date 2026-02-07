@@ -103,38 +103,48 @@ function Quiz({ name }) {
     setPhase("playing");
   };
 
+  const doSubmit = useCallback(() => {
+    if (feedback || !userAnswer) return;
+
+    const current = questions[currentIndex];
+    const parsed = parseInt(userAnswer, 10);
+    const isCorrect = parsed === current.answer;
+
+    if (isCorrect) {
+      setCorrectCount((c) => c + 1);
+      setFeedback("correct");
+    } else {
+      setFeedback("wrong");
+      setWrongAnswer(current.answer);
+    }
+
+    setTimeout(() => {
+      if (currentIndex + 1 >= questions.length) {
+        setElapsed(Math.floor((Date.now() - startTime) / 1000));
+        setPhase("results");
+      } else {
+        setCurrentIndex((i) => i + 1);
+        setUserAnswer("");
+        setFeedback(null);
+        setWrongAnswer(null);
+        setShowHint(false);
+      }
+    }, 1500);
+  }, [feedback, userAnswer, questions, currentIndex, startTime]);
+
   const handleSubmit = useCallback(
     (e) => {
       e.preventDefault();
-      if (feedback) return;
-
-      const current = questions[currentIndex];
-      const parsed = parseInt(userAnswer, 10);
-      const isCorrect = parsed === current.answer;
-
-      if (isCorrect) {
-        setCorrectCount((c) => c + 1);
-        setFeedback("correct");
-      } else {
-        setFeedback("wrong");
-        setWrongAnswer(current.answer);
-      }
-
-      setTimeout(() => {
-        if (currentIndex + 1 >= questions.length) {
-          setElapsed(Math.floor((Date.now() - startTime) / 1000));
-          setPhase("results");
-        } else {
-          setCurrentIndex((i) => i + 1);
-          setUserAnswer("");
-          setFeedback(null);
-          setWrongAnswer(null);
-          setShowHint(false);
-        }
-      }, 1500);
+      doSubmit();
     },
-    [feedback, userAnswer, questions, currentIndex, startTime]
+    [doSubmit]
   );
+
+  const handleBlur = useCallback(() => {
+    if (userAnswer && !feedback) {
+      doSubmit();
+    }
+  }, [doSubmit, userAnswer, feedback]);
 
   const handlePlayAgain = () => {
     setPhase("tables");
@@ -267,6 +277,7 @@ function Quiz({ name }) {
             className="quiz-input"
             value={userAnswer}
             onChange={(e) => setUserAnswer(e.target.value)}
+            onBlur={handleBlur}
             disabled={!!feedback}
             placeholder={t.yourAnswer}
             autoComplete="off"

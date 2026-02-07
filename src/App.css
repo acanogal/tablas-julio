@@ -71,10 +71,12 @@
   display: flex;
   flex-direction: column;
   height: 100%;
+  overflow: hidden;
 }
 
 .app-main {
   flex: 1;
+  min-height: 0;
   overflow-y: auto;
   padding-bottom: 1rem;
 }
@@ -335,15 +337,15 @@
 
 .tabla-modal-close {
   position: absolute;
-  top: -0.5rem;
-  right: -0.5rem;
-  width: 36px;
-  height: 36px;
+  top: -0.75rem;
+  right: -0.75rem;
+  width: 44px;
+  height: 44px;
   border-radius: 50%;
   border: none;
   background: #e17055;
   color: white;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -360,13 +362,13 @@
 }
 
 .tabla-modal-nav {
-  width: 48px;
-  height: 48px;
+  width: 56px;
+  height: 56px;
   border-radius: 50%;
   border: none;
   background: linear-gradient(135deg, #6c5ce7, #a29bfe);
   color: white;
-  font-size: 1.8rem;
+  font-size: 2rem;
   font-weight: 700;
   cursor: pointer;
   display: flex;
@@ -405,9 +407,9 @@
   }
 
   .tabla-modal-nav {
-    width: 40px;
-    height: 40px;
-    font-size: 1.5rem;
+    width: 48px;
+    height: 48px;
+    font-size: 1.8rem;
   }
 }
 
